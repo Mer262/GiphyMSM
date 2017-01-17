@@ -115,11 +115,11 @@ $(document).ready(function() {
                 dinoDiv.attr("class", "well well-sm image");
                 dinoDiv.attr("id", "image" + i);
 
-                var dinoRating = $("<p>");
-                dinoRating.text("Rated " + rating);
+                var dinoRating = $("<p>").text("Rated " + rating);
                 
                 var dinoImage = $("<img>");
                 dinoImage.attr("src", stillImageURL);
+
 
                 dinoDiv.append(dinoRating);
                 dinoDiv.append(dinoImage);
