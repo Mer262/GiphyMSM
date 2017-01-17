@@ -138,17 +138,19 @@ $(document).ready(function() {
 
     };
 
-    $(".image").on("click", function() {
+    $(document).on("click", ".image", function() {
       // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
       var state = $(this).attr("data-state");
+      var index = $(this).attr("data-index");
       // If the clicked image's state is still, update its src attribute to what its data-animate value is.
       // Then, set the image's data-state to animate
       // Else set src to the data-still value
       if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("src", dinoMoving[index]);
         $(this).attr("data-state", "animate");
+        console.log("setting data state to animate: " + dinoMoving[index]);
       } else {
-        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("src", dinoStill[index]);
         $(this).attr("data-state", "still");
       }
     });
