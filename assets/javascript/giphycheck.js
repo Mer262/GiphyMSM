@@ -32,8 +32,7 @@
 //  that takes each topic in the array remakes the buttons on the page.
 
 $(document).ready(function() {
-    var dinoMoving = [];
-    var dinoStill = [];
+    
     var dinoTopics = ["tyrannosaurus", "brachiosaurus", "brontosaurus", "velociraptor", "liopleurodon", "triceratops", "stegosaurus", "iguanodon"];
 
     console.log(dinoTopics);
@@ -112,19 +111,24 @@ $(document).ready(function() {
                 console.log("rating: " + rating);
 
                 var dinoDiv = $("<div>");
-                dinoDiv.attr("class", "well well-sm image");
+                // dinoDiv.attr("class", "image");
                 dinoDiv.attr("id", "image" + i);
 
-                var dinoRating = $("<p>").text("Rated " + rating);
+                var dinoRating = $("<p>").text("Rated: " + rating);
+                dinoRating.attr("class", "well");
                 
                 var dinoImage = $("<img>");
                 dinoImage.attr("src", stillImageURL);
+                dinoImage.attr("class", "image")
+                dinoImage.attr("data-state", "still");
+                dinoImage.attr("data-index", i);
+                console.log("data-index: " + i);
 
 
                 dinoDiv.append(dinoRating);
                 dinoDiv.append(dinoImage);
 
-                $("show-gifs").append(dinoDiv);
+                $("#show-gifs").append(dinoDiv);
             }
 
             console.log("dinoMoving array: " + dinoMoving);
@@ -133,6 +137,21 @@ $(document).ready(function() {
         });
 
     };
+
+    $(".image").on("click", function() {
+      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+      var state = $(this).attr("data-state");
+      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+      // Then, set the image's data-state to animate
+      // Else set src to the data-still value
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+    });
 
     $(document).on("click", ".dino-btn", dinoGifs);
 
