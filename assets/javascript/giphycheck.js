@@ -115,17 +115,18 @@ $(document).ready(function() {
                 dinoDiv.attr("id", "image" + i);
 
                 var dinoRating = $("<p>").text("Rated: " + rating);
-                dinoRating.attr("class", "well");
-                
+                dinoRating.attr("class", "well col-sm-6 col-xs-6");
+                var dinoBreak = $("<br>");
                 var dinoImage = $("<img>");
                 dinoImage.attr("src", stillImageURL);
-                dinoImage.attr("class", "image")
+                dinoImage.attr("class", "image clearfix")
                 dinoImage.attr("data-state", "still");
                 dinoImage.attr("data-index", i);
                 console.log("data-index: " + i);
 
 
                 dinoDiv.append(dinoRating);
+                dinoDiv.append(dinoBreak);
                 dinoDiv.append(dinoImage);
 
                 $("#show-gifs").append(dinoDiv);

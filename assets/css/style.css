@@ -36,6 +36,7 @@ p {
 .well {
 	background: rgba(247, 248, 249, 0.3);
 	padding: 0;
+
 }
 
 button,
@@ -50,4 +51,12 @@ input {
 
 .dinoBtn {
     margin: 10px;
+}
+
+.image {
+    float: left;
+}
+
+.clearfix {
+    overflow: auto;
 }
