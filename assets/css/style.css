@@ -1,0 +1,53 @@
+body {
+    background: url("../images/trex_copy.jpg");
+    /*letter-spacing: 1.5px;*/
+    /*font-family: 'Chewy', cursive;*/
+    /*font-family: 'Bangers', cursive;*/
+    /*font-family: 'Freckle Face', cursive;*/
+}
+
+.jumbotron {
+    background: rgba(247, 248, 249, 0.25);
+    color: black;
+    font-family: 'Bangers', cursive;
+ 	padding: 10px;
+ 	margin-bottom: 0px;
+}
+
+h1 {
+    font-size: 28pt;
+    /*letter-spacing: 1.5px;*/
+}
+
+h2 {
+	font-family: 'Chewy', cursive;
+	letter-spacing: 1.5px;
+}
+
+p {
+	font-weight: bold;
+}
+
+#panel-left {
+	float: left;
+	padding: 0;
+}
+
+.well {
+	background: rgba(247, 248, 249, 0.25);
+	padding: 0;
+}
+
+button,
+div,
+form,
+input {
+	padding: 5px;
+    margin: 3px;
+    font-size: 14pt;
+    overflow: hidden;
+}
+
+.dinoBtn {
+    margin: 10px;
+}
