@@ -83,7 +83,7 @@ $(document).ready(function() {
 
         var chooseDino = $(this).attr("data-value");
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search";
+        var queryURL = "https://api.giphy.com/v1/gifs/search";
 
         $.ajax({
             url: queryURL,
