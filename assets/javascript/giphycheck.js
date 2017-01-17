@@ -79,6 +79,9 @@ $(document).ready(function() {
 
 
     function dinoGifs() {
+        $("#show-gifs").empty();
+
+        var chooseDino = $(this).attr("data-value");
 
         var queryURL = "http://api.giphy.com/v1/gifs/search";
 
@@ -87,14 +90,51 @@ $(document).ready(function() {
             method: 'GET',
             data: {
                 api_key: "dc6zaTOxFJmzC",
-                q: newDino;
+                q: chooseDino,
                 limit: 10
             }
         }).done(function(response) {
+            dinoMoving = [];
+            dinoStill = [];
+
+
+            for (var i = 0; i < response.data.length; i++) {
+               
+                var moveImageURL = response.data[i].images.original.url;
+                dinoMoving.push(moveImageURL);
+                console.log("moveImageURL: " + moveImageURL)
+
+                var stillImageURL = response.data[i].images.original_still.url;
+                dinoStill.push(stillImageURL);
+                console.log("stillImageURL: " +stillImageURL);
+
+                var rating = response.data[i].rating;
+                console.log("rating: " + rating);
+
+                var dinoDiv = $("<div>");
+                dinoDiv.attr("class", "well well-sm image");
+                dinoDiv.attr("id", "image" + i);
+
+                var dinoRating = $("<p>");
+                dinoRating.text("Rated " + rating);
+                
+                var dinoImage = $("<img>");
+                dinoImage.attr("src", stillImageURL);
+
+                dinoDiv.append(dinoRating);
+                dinoDiv.append(dinoImage);
+
+                $("show-gifs").append(dinoDiv);
+            }
+
+            console.log("dinoMoving array: " + dinoMoving);
+            console.log("dinoStill array: " + dinoStill);
 
         });
 
-    }
+    };
+
+    $(document).on("click", ".dino-btn", dinoGifs);
 
 
 });
