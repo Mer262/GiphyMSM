@@ -116,7 +116,7 @@ $(document).ready(function() {
                 dinoDiv.attr("class", "thumbnail");
 
                 var dinoRating = $("<p>").text("Rated: " + rating);
-                dinoRating.attr("class", "col-sm-6 col-xs-6");
+                // dinoRating.attr("class", "col-sm-6 col-xs-6");
                 // var dinoBreak = $("<br>");
                 var dinoImage = $("<img>");
                 dinoImage.attr("src", stillImageURL);
