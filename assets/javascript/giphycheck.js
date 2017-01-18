@@ -32,7 +32,7 @@
 //  that takes each topic in the array remakes the buttons on the page.
 
 $(document).ready(function() {
-    
+
     var dinoTopics = ["tyrannosaurus", "brachiosaurus", "brontosaurus", "velociraptor", "liopleurodon", "triceratops", "stegosaurus", "iguanodon"];
 
     console.log(dinoTopics);
@@ -98,14 +98,14 @@ $(document).ready(function() {
 
 
             for (var i = 0; i < response.data.length; i++) {
-               
+
                 var moveImageURL = response.data[i].images.original.url;
                 dinoMoving.push(moveImageURL);
                 console.log("moveImageURL: " + moveImageURL)
 
                 var stillImageURL = response.data[i].images.original_still.url;
                 dinoStill.push(stillImageURL);
-                console.log("stillImageURL: " +stillImageURL);
+                console.log("stillImageURL: " + stillImageURL);
 
                 var rating = response.data[i].rating;
                 console.log("rating: " + rating);
@@ -113,20 +113,21 @@ $(document).ready(function() {
                 var dinoDiv = $("<div>");
                 // dinoDiv.attr("class", "image");
                 dinoDiv.attr("id", "image" + i);
+                dinoDiv.attr("class", "thumbnail");
 
                 var dinoRating = $("<p>").text("Rated: " + rating);
-                dinoRating.attr("class", "well col-sm-6 col-xs-6");
-                var dinoBreak = $("<br>");
+                dinoRating.attr("class", "col-sm-6 col-xs-6");
+                // var dinoBreak = $("<br>");
                 var dinoImage = $("<img>");
                 dinoImage.attr("src", stillImageURL);
-                dinoImage.attr("class", "image clearfix")
+                dinoImage.attr("class", "image");
                 dinoImage.attr("data-state", "still");
                 dinoImage.attr("data-index", i);
                 console.log("data-index: " + i);
 
 
                 dinoDiv.append(dinoRating);
-                dinoDiv.append(dinoBreak);
+                // dinoDiv.append(dinoBreak);
                 dinoDiv.append(dinoImage);
 
                 $("#show-gifs").append(dinoDiv);
@@ -140,20 +141,20 @@ $(document).ready(function() {
     };
 
     $(document).on("click", ".image", function() {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      var index = $(this).attr("data-index");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", dinoMoving[index]);
-        $(this).attr("data-state", "animate");
-        console.log("setting data state to animate: " + dinoMoving[index]);
-      } else {
-        $(this).attr("src", dinoStill[index]);
-        $(this).attr("data-state", "still");
-      }
+        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        var state = $(this).attr("data-state");
+        var index = $(this).attr("data-index");
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+            $(this).attr("src", dinoMoving[index]);
+            $(this).attr("data-state", "animate");
+            console.log("setting data state to animate: " + dinoMoving[index]);
+        } else {
+            $(this).attr("src", dinoStill[index]);
+            $(this).attr("data-state", "still");
+        }
     });
 
     $(document).on("click", ".dino-btn", dinoGifs);
